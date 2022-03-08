@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="275.0" layoutY="75.0" text="Login" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="47.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameTextfield" layoutX="294.0" layoutY="202.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter your username!" />
+      <TextField fx:id="passwordTextfield" layoutX="295.0" layoutY="261.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter your password!" />
+      <Label fx:id="usernameLabel" layoutX="109.0" layoutY="200.0" text="username:" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordLabel" layoutX="114.0" layoutY="256.0" text="password:" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginButton" layoutX="127.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="LOGIN" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearButton" layoutX="277.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="CLEAR" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="439.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="21.0" />
+         </font>
+      </Button>
+      <Label fx:id="incorrectUsernameLabel" layoutX="186.0" layoutY="470.0" text="This username doesn't exist!" textAlignment="CENTER" textFill="#e91212" visible="false">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="incorrectPasswordLabel" layoutX="223.0" layoutY="470.0" text="Incorrect password!" textAlignment="CENTER" textFill="#e91212" visible="false">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="emptyFieldsLabel" layoutX="206.0" layoutY="470.0" text="Some fields are empty!" textAlignment="CENTER" textFill="#e91212" visible="false">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

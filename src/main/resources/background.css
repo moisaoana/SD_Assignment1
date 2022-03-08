@@ -1,0 +1,6 @@
+.bodybg{
+ -fx-background-image: url('back.jpg');
+ -fx-background-size: 100% 100%;
+ -fx-border-color: #EBC00C;
+ -fx-border-width: 3;
+}
