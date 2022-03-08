@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
    <children>
-      <Label fx:id="titleLabel" layoutX="275.0" layoutY="75.0" text="Login" textAlignment="CENTER" textFill="#2a8b6e">
+      <Label fx:id="titleLabel" layoutX="275.0" layoutY="75.0" text="Login" textAlignment="CENTER" textFill="#ebc00c">
          <font>
             <Font name="Bodoni MT Bold Italic" size="47.0" />
          </font>
@@ -26,17 +25,17 @@
             <Font name="Bodoni MT Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="127.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="LOGIN" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="127.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickLogin" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="LOGIN" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" layoutX="277.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="CLEAR" textFill="WHITE">
+      <Button fx:id="clearButton" layoutX="277.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="CLEAR" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="439.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="439.0" layoutY="393.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="21.0" />
          </font>

@@ -7,11 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.service.UserService;
 
 public class LoginController {
     private Main main;
     private Scene startScene;
     private Scene userProfileScene;
+    private String username,password;
+    private UserService userService=new UserService();
     public void setMain(Main main){
         this.main = main;
     }
@@ -61,18 +64,34 @@ public class LoginController {
 
     @FXML
     void clickClear(ActionEvent event) {
-        usernameTextfield.clear();
-        passwordTextfield.clear();
+        clearTextFields();
         disableWarnings();
     }
 
     @FXML
     void clickLogin(ActionEvent event) {
-        main.setScene(userProfileScene);
+        disableWarnings();
+        this.username=usernameTextfield.getText();
+        this.password=passwordTextfield.getText();
+        int result=userService.loginUser(this.username,this.password);
+        if(result==1){
+            incorrectUsernameLabel.setVisible(true);
+        }else if(result==2){
+            incorrectPasswordLabel.setVisible(true);
+        }else if(result==3){
+            emptyFieldsLabel.setVisible(true);
+        }else{
+            main.setScene(userProfileScene);
+        }
+
     }
     private void disableWarnings(){
         incorrectUsernameLabel.setVisible(false);
         incorrectPasswordLabel.setVisible(false);
         emptyFieldsLabel.setVisible(false);
+    }
+    private void clearTextFields(){
+        usernameTextfield.clear();
+        passwordTextfield.clear();
     }
 }

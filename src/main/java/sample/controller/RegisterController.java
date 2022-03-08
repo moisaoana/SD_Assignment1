@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import sample.Main;
+import sample.service.UserService;
 
 public class RegisterController {
     private Main main;
@@ -18,6 +19,8 @@ public class RegisterController {
     public void setStartScene(Scene scene){
         this.startScene=scene;
     }
+    private String username,password,firstName,lastName;
+    private UserService userService=new UserService();
 
     @FXML
     private TextField usernameTextfield;
@@ -47,6 +50,17 @@ public class RegisterController {
 
     @FXML
     private Label emptyFieldsLabel;
+    @FXML
+    private Label firstNameLabel;
+
+    @FXML
+    private Label lastNameLabel;
+
+    @FXML
+    private TextField firstNameTextfield;
+
+    @FXML
+    private TextField lastNameTextfield;
 
     @FXML
     void clickBack(ActionEvent event) {
@@ -56,17 +70,37 @@ public class RegisterController {
 
     @FXML
     void clickClear(ActionEvent event) {
-        usernameTextfield.clear();
-        passwordTextfield.clear();
+        clearTextFields();
         disableWarnings();
     }
 
     @FXML
     void clickRegister(ActionEvent event) {
+        disableWarnings();
+        username=usernameTextfield.getText();
+        password=passwordTextfield.getText();
+        firstName=firstNameTextfield.getText();
+        lastName=lastNameTextfield.getText();
+        int result=userService.registerUser(username,password,firstName,lastName);
+        if(result==1){
+            usernameExistsLabel.setVisible(true);
+        }else if(result==2){
+            emptyFieldsLabel.setVisible(true);
+        }else{
+            disableWarnings();
+            clearTextFields();
+            main.setScene(startScene);
+        }
 
     }
     private void disableWarnings(){
         usernameExistsLabel.setVisible(false);
         emptyFieldsLabel.setVisible(false);
+    }
+    private void clearTextFields(){
+        usernameTextfield.clear();
+        passwordTextfield.clear();
+        firstNameTextfield.clear();
+        lastNameTextfield.clear();
     }
 }

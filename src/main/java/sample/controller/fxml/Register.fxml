@@ -6,37 +6,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.RegisterController">
    <children>
-      <TextField fx:id="usernameTextfield" layoutX="302.0" layoutY="203.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter a username!" />
-      <TextField fx:id="passwordTextfield" layoutX="303.0" layoutY="273.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter a password!" />
-      <Label fx:id="titleLabel" layoutX="242.0" layoutY="79.0" text="Register" textAlignment="CENTER" textFill="#2a8b6e">
+      <TextField fx:id="usernameTextfield" layoutX="302.0" layoutY="195.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter a username!" />
+      <TextField fx:id="passwordTextfield" layoutX="303.0" layoutY="242.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter a password!" />
+      <Label fx:id="titleLabel" layoutX="242.0" layoutY="79.0" text="Register" textAlignment="CENTER" textFill="#ebc00c">
          <font>
             <Font name="Bodoni MT Bold Italic" size="47.0" />
          </font>
       </Label>
-      <Label fx:id="usernameLabel" layoutX="127.0" layoutY="203.0" text="username:" textAlignment="CENTER" textFill="#2a8b6e">
+      <Label fx:id="usernameLabel" layoutX="127.0" layoutY="192.0" text="username:" textAlignment="CENTER" textFill="#2a8b6e">
          <font>
             <Font name="Bodoni MT Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="passwordLabel" layoutX="126.0" layoutY="268.0" text="password:" textAlignment="CENTER" textFill="#2a8b6e">
+      <Label fx:id="passwordLabel" layoutX="126.0" layoutY="238.0" text="password:" textAlignment="CENTER" textFill="#2a8b6e">
          <font>
             <Font name="Bodoni MT Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Button fx:id="registerButton" layoutX="117.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickRegister" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="REGISTER" textFill="WHITE">
+      <Button fx:id="registerButton" layoutX="117.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickRegister" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="REGISTER" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" layoutX="289.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="CLEAR" textFill="WHITE">
+      <Button fx:id="clearButton" layoutX="289.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="CLEAR" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="21.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="455.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="455.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="44.0" prefWidth="105.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="21.0" />
          </font>
@@ -51,5 +50,17 @@
             <Font name="Bodoni MT Bold Italic" size="22.0" />
          </font>
       </Label>
+      <Label fx:id="firstNameLabel" layoutX="127.0" layoutY="283.0" text="first name:" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastNameLabel" layoutX="124.0" layoutY="328.0" text="last name:" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameTextfield" layoutX="303.0" layoutY="284.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter your first name!" />
+      <TextField fx:id="lastNameTextfield" layoutX="302.0" layoutY="329.0" prefHeight="25.0" prefWidth="232.0" promptText="Please enter your last name!" />
    </children>
 </AnchorPane>

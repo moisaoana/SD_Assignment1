@@ -9,7 +9,11 @@ import sample.controller.LoginController;
 import sample.controller.RegisterController;
 import sample.controller.StartPageController;
 import sample.controller.UserProfileController;
+import sample.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.net.URL;
 
