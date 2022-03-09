@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.model.Warning;
 import sample.service.UserService;
 
 public class LoginController {
@@ -31,7 +33,7 @@ public class LoginController {
     private TextField usernameTextfield;
 
     @FXML
-    private TextField passwordTextfield;
+    private PasswordField passwordTextfield;
 
     @FXML
     private Label usernameLabel;
@@ -73,14 +75,16 @@ public class LoginController {
         disableWarnings();
         this.username=usernameTextfield.getText();
         this.password=passwordTextfield.getText();
-        int result=userService.loginUser(this.username,this.password);
-        if(result==1){
+        Warning result=userService.loginUser(this.username,this.password);
+        if(result==Warning.NOT_FOUND){
             incorrectUsernameLabel.setVisible(true);
-        }else if(result==2){
+        }else if(result==Warning.WRONG_PASS){
             incorrectPasswordLabel.setVisible(true);
-        }else if(result==3){
+        }else if(result==Warning.EMPTY_FIELDS){
             emptyFieldsLabel.setVisible(true);
         }else{
+            UserProfileController userProfileController=main.getUserProfileController();
+            userProfileController.setUsernameLabel(username);
             main.setScene(userProfileScene);
         }
 

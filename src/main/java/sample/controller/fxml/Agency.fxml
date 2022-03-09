@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AgencyController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="37.0" layoutY="18.0" text="Travelling Agency" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="35.0" />
+         </font>
+      </Label>
+      <TextField fx:id="addDestinationTextfield" layoutX="24.0" layoutY="112.0" prefHeight="43.0" prefWidth="177.0" promptText="Enter destination" />
+      <Label fx:id="addDestinationLabel" layoutX="21.0" layoutY="77.0" text="Add a new destination:" textAlignment="CENTER" textFill="#ebc00c">
+         <font>
+            <Font name="Bodoni MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="addDestinationButton" layoutX="211.0" layoutY="114.0" mnemonicParsing="false" onAction="#clickAddDestination" prefHeight="36.0" prefWidth="54.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Line endX="116.0" layoutX="121.0" layoutY="102.0" startX="-100.0" stroke="#2a8b6e" />
+      <Label fx:id="warningLabel" layoutX="28.0" layoutY="161.0" text="Empty field!" textAlignment="CENTER" textFill="#e91212" visible="false">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

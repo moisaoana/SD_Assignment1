@@ -17,9 +17,9 @@
             <Font name="Bodoni MT Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="agencyButton" layoutX="465.0" layoutY="425.0" mnemonicParsing="false" onAction="#clickAgency" prefHeight="67.0" prefWidth="115.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="TRAVEL AGENCY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="agencyButton" layoutX="465.0" layoutY="425.0" mnemonicParsing="false" onAction="#clickAgency" prefHeight="67.0" prefWidth="115.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="TRAVELLING AGENCY" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Bodoni MT Bold" size="18.0" />
+            <Font name="Bodoni MT Bold" size="15.0" />
          </font>
       </Button>
       <Label fx:id="titleLabel" layoutX="169.0" layoutY="185.0" text="Travel Booker" textAlignment="CENTER" textFill="#2a8b6e">

@@ -1,6 +1,7 @@
 package sample.service;
 
 import sample.model.User;
+import sample.model.Warning;
 import sample.repository.UserRepository;
 
 import java.util.List;
@@ -11,31 +12,31 @@ public class UserService {
     private boolean areFieldsNonEmpty(String username,String password, String firstName, String lastName){
         return !(username.isEmpty() | password.isEmpty()) && !firstName.isEmpty() && !lastName.isEmpty();
     }
-    public int registerUser(String username,String password, String firstName, String lastName){
+    public Warning registerUser(String username, String password, String firstName, String lastName){
        if(areFieldsNonEmpty(username,password,firstName,lastName)){
            if(userRepository.usernameExistsInDB(username)){
-               return 1;
+               return Warning.DUPLICATE; //username already exists
            }else{
                int id= userRepository.getNextIdFromDB();
                userRepository.insertUserInDB(id,username,password,firstName,lastName);
-               return 0;
+               return Warning.SUCCESS;
            }
        }else{
-           return 2;
+           return Warning.EMPTY_FIELDS; //some fields are empty
        }
     }
-    public int loginUser(String username, String password){
+    public Warning loginUser(String username, String password){
         if(username.isEmpty() || password.isEmpty()){
-            return 3;
+            return Warning.EMPTY_FIELDS; //some fields are empty
         }else {
             String passwordFromDB = userRepository.getUserPassword(username);
             if (passwordFromDB == null) {
-                return 1; //user with given username doesn't exist
+                return Warning.NOT_FOUND; //user with given username doesn't exist
             } else { //username exists
                 if (password.equals(passwordFromDB)) {
-                    return 0;
+                    return Warning.SUCCESS;
                 } else {
-                    return 2;
+                    return Warning.WRONG_PASS; //passwords don't match
                 }
             }
         }

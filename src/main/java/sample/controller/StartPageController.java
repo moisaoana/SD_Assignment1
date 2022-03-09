@@ -40,7 +40,7 @@ public class StartPageController {
 
     @FXML
     void clickAgency(ActionEvent event) {
-
+        main.setScene(agencyScene);
     }
 
     @FXML

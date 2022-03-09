@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import sample.Main;
+import sample.model.Warning;
 import sample.service.UserService;
 
 public class RegisterController {
@@ -81,10 +82,10 @@ public class RegisterController {
         password=passwordTextfield.getText();
         firstName=firstNameTextfield.getText();
         lastName=lastNameTextfield.getText();
-        int result=userService.registerUser(username,password,firstName,lastName);
-        if(result==1){
+        Warning result=userService.registerUser(username,password,firstName,lastName);
+        if(result==Warning.DUPLICATE){
             usernameExistsLabel.setVisible(true);
-        }else if(result==2){
+        }else if(result==Warning.EMPTY_FIELDS){
             emptyFieldsLabel.setVisible(true);
         }else{
             disableWarnings();

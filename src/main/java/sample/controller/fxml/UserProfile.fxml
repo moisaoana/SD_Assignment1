@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.UserProfileController">
-
+<AnchorPane prefHeight="550.0" prefWidth="650.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.UserProfileController">
+   <children>
+      <Label fx:id="usernameLabel" layoutX="27.0" layoutY="22.0" text="username" textAlignment="CENTER" textFill="#2a8b6e">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="profileLabel" layoutX="217.0" layoutY="33.0" text="'s profile" textAlignment="CENTER" textFill="#ebc00c">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="27.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

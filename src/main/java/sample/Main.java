@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.controller.LoginController;
-import sample.controller.RegisterController;
-import sample.controller.StartPageController;
-import sample.controller.UserProfileController;
+import sample.controller.*;
 import sample.model.User;
 
 import javax.persistence.EntityManager;
@@ -19,6 +16,7 @@ import java.net.URL;
 
 public class Main extends Application {
     Stage window;
+    private UserProfileController userProfileController;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -26,6 +24,7 @@ public class Main extends Application {
         URL urlLoginPage=new File("src/main/java/sample/controller/fxml/Login.fxml").toURI().toURL();
         URL urlRegisterPage=new File("src/main/java/sample/controller/fxml/Register.fxml").toURI().toURL();
         URL urlUserProfilePage=new File("src/main/java/sample/controller/fxml/UserProfile.fxml").toURI().toURL();
+        URL urlAgency=new File("src/main/java/sample/controller/fxml/Agency.fxml").toURI().toURL();
 
         window=primaryStage;
         FXMLLoader loader = new FXMLLoader();
@@ -46,12 +45,18 @@ public class Main extends Application {
         loader = new FXMLLoader();
         loader.setLocation(urlUserProfilePage);
         Parent rootUserProfile=loader.load();
-        UserProfileController userProfileController = loader.getController();
+         userProfileController = loader.getController();
+
+        loader = new FXMLLoader();
+        loader.setLocation(urlAgency);
+        Parent rootAgency=loader.load();
+       AgencyController agencyController = loader.getController();
 
         Scene startScene = new Scene(rootStartPage, 650, 550);
         Scene loginScene = new Scene(rootLogin, 650, 550);
         Scene registerScene=new Scene(rootRegister,650,550);
         Scene userProfileScene=new Scene(rootUserProfile,650,550);
+        Scene agencyScene=new Scene(rootAgency,650,550);
 
         loginController.setMain(this);
         loginController.setStartScene(startScene);
@@ -63,8 +68,11 @@ public class Main extends Application {
         startPageController.setMain(this);
         startPageController.setLoginScene(loginScene);
         startPageController.setRegisterScene(registerScene);
+        startPageController.setAgencyScene(agencyScene);
 
         userProfileController.setMain(this);
+
+        agencyController.setMain(this);
 
 
         window.setScene(startScene);
@@ -75,6 +83,11 @@ public class Main extends Application {
     public void setScene(Scene scene){
         window.setScene(scene);
     }
+
+    public UserProfileController getUserProfileController() {
+        return userProfileController;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
