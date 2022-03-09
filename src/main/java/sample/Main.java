@@ -25,6 +25,7 @@ public class Main extends Application {
         URL urlRegisterPage=new File("src/main/java/sample/controller/fxml/Register.fxml").toURI().toURL();
         URL urlUserProfilePage=new File("src/main/java/sample/controller/fxml/UserProfile.fxml").toURI().toURL();
         URL urlAgency=new File("src/main/java/sample/controller/fxml/Agency.fxml").toURI().toURL();
+        URL urlNewPackage=new File("src/main/java/sample/controller/fxml/NewPackage.fxml").toURI().toURL();
 
         window=primaryStage;
         FXMLLoader loader = new FXMLLoader();
@@ -50,13 +51,19 @@ public class Main extends Application {
         loader = new FXMLLoader();
         loader.setLocation(urlAgency);
         Parent rootAgency=loader.load();
-       AgencyController agencyController = loader.getController();
+        AgencyController agencyController = loader.getController();
+
+        loader = new FXMLLoader();
+        loader.setLocation(urlNewPackage);
+        Parent rootNewPackage=loader.load();
+        NewPackageController newPackageController = loader.getController();
 
         Scene startScene = new Scene(rootStartPage, 650, 550);
         Scene loginScene = new Scene(rootLogin, 650, 550);
         Scene registerScene=new Scene(rootRegister,650,550);
         Scene userProfileScene=new Scene(rootUserProfile,650,550);
         Scene agencyScene=new Scene(rootAgency,650,550);
+        Scene newPackageScene=new Scene(rootNewPackage,400,600);
 
         loginController.setMain(this);
         loginController.setStartScene(startScene);
@@ -73,6 +80,10 @@ public class Main extends Application {
         userProfileController.setMain(this);
 
         agencyController.setMain(this);
+        agencyController.setNewPackageScene(newPackageScene);
+
+        newPackageController.setMain(this);
+        newPackageController.setAgencyScene(agencyScene);
 
 
         window.setScene(startScene);

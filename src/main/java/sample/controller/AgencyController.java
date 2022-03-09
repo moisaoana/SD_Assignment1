@@ -2,6 +2,7 @@ package sample.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,9 +12,13 @@ import sample.service.TravellingAgencyService;
 
 public class AgencyController {
     private Main main;
+    private Scene newPackageScene;
     private TravellingAgencyService travellingAgencyService=new TravellingAgencyService();
     public void setMain(Main main){
         this.main = main;
+    }
+    public void setNewPackageScene(Scene scene){
+        this.newPackageScene=scene;
     }
     @FXML
     private Label titleLabel;
@@ -31,6 +36,11 @@ public class AgencyController {
     private Label warningLabel;
 
     @FXML
+    private Label addPackageLabel;
+    @FXML
+    private Button addPackageButton;
+
+    @FXML
     void clickAddDestination(ActionEvent event) {
         warningLabel.setVisible(false);
         String name= addDestinationTextfield.getText();
@@ -45,6 +55,10 @@ public class AgencyController {
             travellingAgencyService.addNewDestination(name);
             addDestinationTextfield.clear();
         }
+    }
+    @FXML
+    void clickAddPackage(ActionEvent event) {
+        main.setScene(newPackageScene);
     }
 
 }

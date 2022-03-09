@@ -32,5 +32,16 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Label>
+      <Button fx:id="addPackageButton" layoutX="417.0" layoutY="105.0" mnemonicParsing="false" onAction="#clickAddPackage" prefHeight="43.0" prefWidth="122.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="NEW PACKAGE" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Bodoni MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="addPackageLabel" layoutX="379.0" layoutY="77.0" text="Add a new package:" textAlignment="CENTER" textFill="#ebc00c">
+         <font>
+            <Font name="Bodoni MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <Line endX="88.0" layoutX="480.0" layoutY="102.0" startX="-100.0" stroke="#2a8b6e" />
    </children>
 </AnchorPane>

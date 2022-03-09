@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #ebc00c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.NewPackageController">
+   <children>
+      <Label fx:id="titleLabel" layoutX="59.0" layoutY="14.0" text="Add new package" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" layoutX="13.0" layoutY="151.0" text="name:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" layoutX="15.0" layoutY="201.0" text="price:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="startDateLabel" layoutX="13.0" layoutY="259.0" text="start date:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="endDateLabel" layoutX="14.0" layoutY="311.0" text="end date:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="detailsLabel" layoutX="14.0" layoutY="362.0" text="extra details:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="capacityLabel" layoutX="14.0" layoutY="432.0" text="capacity:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="destLabel" layoutX="14.0" layoutY="103.0" text="destination:" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameTextfield" layoutX="95.0" layoutY="152.0" prefHeight="27.0" prefWidth="133.0" promptText="Enter package name" />
+      <TextField fx:id="priceTextField" layoutX="96.0" layoutY="203.0" prefHeight="27.0" prefWidth="104.0" promptText="Enter price" />
+      <TextField fx:id="startDayTextfield" layoutX="124.0" layoutY="259.0" prefHeight="27.0" prefWidth="46.0" promptText="DD" />
+      <TextField fx:id="startMonthTextfield" layoutX="184.0" layoutY="259.0" prefHeight="27.0" prefWidth="46.0" promptText="MM" />
+      <TextField fx:id="startYearTextfield" layoutX="247.0" layoutY="259.0" prefHeight="27.0" prefWidth="46.0" promptText="YYYY" />
+      <TextField fx:id="endDayTextfield" layoutX="125.0" layoutY="315.0" prefHeight="27.0" prefWidth="46.0" promptText="DD" />
+      <TextField fx:id="endMonthTextfield" layoutX="185.0" layoutY="314.0" prefHeight="27.0" prefWidth="46.0" promptText="MM" />
+      <TextField fx:id="endYearTextfield" layoutX="248.0" layoutY="314.0" prefHeight="27.0" prefWidth="46.0" promptText="YYYY" />
+      <TextField fx:id="detailsTextfield" layoutX="156.0" layoutY="368.0" prefHeight="56.0" prefWidth="229.0" promptText="Enter extra details" />
+      <TextField fx:id="capacityTextfield" layoutX="118.0" layoutY="436.0" prefHeight="27.0" prefWidth="93.0" promptText="Enter capacity" />
+      <Button fx:id="addButton" layoutX="63.0" layoutY="518.0" mnemonicParsing="false" onAction="#clickAdd" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearButton" layoutX="162.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="CLEAR" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="256.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="19.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="comboBox" layoutX="140.0" layoutY="104.0" onMouseClicked="#clickComboBox" prefHeight="25.0" prefWidth="133.0" />
+      <Label fx:id="warningLabel" layoutX="146.0" layoutY="477.0" text="Empty field!" textAlignment="CENTER" textFill="#e91212" visible="false">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

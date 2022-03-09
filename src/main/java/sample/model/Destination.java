@@ -13,7 +13,7 @@ public class Destination {
     @Column(unique= true, nullable=false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="destination")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="destination",fetch = FetchType.EAGER)
     private List<Package> packages;
 
     public Destination(){
@@ -26,5 +26,9 @@ public class Destination {
 
     public String getName() {
         return name;
+    }
+
+    public List<Package> getPackages() {
+        return packages;
     }
 }
