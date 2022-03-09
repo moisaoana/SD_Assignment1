@@ -62,7 +62,7 @@ public class Main extends Application {
         Scene loginScene = new Scene(rootLogin, 650, 550);
         Scene registerScene=new Scene(rootRegister,650,550);
         Scene userProfileScene=new Scene(rootUserProfile,650,550);
-        Scene agencyScene=new Scene(rootAgency,650,550);
+        Scene agencyScene=new Scene(rootAgency,750,550);
         Scene newPackageScene=new Scene(rootNewPackage,400,600);
 
         loginController.setMain(this);

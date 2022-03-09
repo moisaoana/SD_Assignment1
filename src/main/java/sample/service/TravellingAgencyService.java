@@ -1,5 +1,8 @@
 package sample.service;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.model.Package;
 import sample.model.Warning;
 import sample.repository.TravellingAgencyRepository;
 
@@ -94,5 +97,11 @@ public class TravellingAgencyService {
             return Warning.EMPTY_FIELDS;
         }
     }
+
+    public ObservableList<Package> getAllPackages() {
+        List<Package> allPack=travellingAgencyRepository.getAllPackagesFromDB();
+        return FXCollections.observableArrayList(allPack);
+    }
+
 
 }

@@ -31,4 +31,20 @@ public class Destination {
     public List<Package> getPackages() {
         return packages;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
+    }
 }
