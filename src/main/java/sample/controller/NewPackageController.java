@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import sample.Main;
+import sample.model.Package;
 import sample.model.Warning;
 import sample.service.TravellingAgencyService;
 
@@ -20,11 +21,15 @@ public class NewPackageController {
     private Main main;
     private Scene agencyScene;
     TravellingAgencyService travellingAgencyService=new TravellingAgencyService();
+    AgencyController agencyController;
     public void setMain(Main main){
         this.main = main;
     }
     public void setAgencyScene(Scene scene){
         this.agencyScene=scene;
+    }
+    public void setAgencyController(AgencyController controller){
+        this.agencyController=controller;
     }
 
     @FXML
@@ -157,6 +162,7 @@ public class NewPackageController {
             case SUCCESS:{
                clearAllFields();
                warningLabel.setVisible(false);
+               agencyController.updateTable();
                main.setScene(agencyScene);
                break;
             }
@@ -195,6 +201,20 @@ public class NewPackageController {
     @FXML
     void clickComboBox(MouseEvent event) {
         setComboBox();
+    }
+    public void editPackage(Package p){
+        comboBox.setValue(p.getDestination().getName());
+        nameTextfield.setText(p.getName());
+        priceTextField.setText(Double.toString(p.getPrice()));
+        startDayTextfield.setText(Integer.toString(p.getStartDate().getDayOfMonth()));
+        startMonthTextfield.setText(Integer.toString(p.getStartDate().getMonthValue()));
+        startYearTextfield.setText(Integer.toString(p.getStartDate().getYear()));
+        endDayTextfield.setText(Integer.toString(p.getEndDate().getDayOfMonth()));
+        endMonthTextfield.setText(Integer.toString(p.getEndDate().getMonthValue()));
+        endYearTextfield.setText(Integer.toString(p.getEndDate().getYear()));
+        detailsTextfield.setText(p.getDetails());
+        capacityTextfield.setText(Integer.toString(p.getMaxCapacity()));
+
     }
 
 }

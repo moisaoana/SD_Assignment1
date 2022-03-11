@@ -1,9 +1,8 @@
 package sample.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="user")
@@ -22,6 +21,14 @@ public class User {
 
     @Column(nullable=false)
     private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name="bookings",
+                joinColumns = @JoinColumn(name="user_id"),
+                inverseJoinColumns = @JoinColumn(name="package_id"))
+    private List<Package> packages;
+
+
 
     public User(){
 
@@ -73,5 +80,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Package> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
     }
 }

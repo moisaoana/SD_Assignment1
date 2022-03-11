@@ -61,8 +61,8 @@ public class Main extends Application {
         Scene startScene = new Scene(rootStartPage, 650, 550);
         Scene loginScene = new Scene(rootLogin, 650, 550);
         Scene registerScene=new Scene(rootRegister,650,550);
-        Scene userProfileScene=new Scene(rootUserProfile,650,550);
-        Scene agencyScene=new Scene(rootAgency,750,550);
+        Scene userProfileScene=new Scene(rootUserProfile,1000,650);
+        Scene agencyScene=new Scene(rootAgency,900,550);
         Scene newPackageScene=new Scene(rootNewPackage,400,600);
 
         loginController.setMain(this);
@@ -78,13 +78,19 @@ public class Main extends Application {
         startPageController.setAgencyScene(agencyScene);
 
         userProfileController.setMain(this);
+        userProfileController.setStartScene(startScene);
 
-        agencyController.setMain(this);
-        agencyController.setNewPackageScene(newPackageScene);
+
 
         newPackageController.setMain(this);
         newPackageController.setAgencyScene(agencyScene);
 
+        agencyController.setMain(this);
+        agencyController.setNewPackageScene(newPackageScene);
+        agencyController.setStartScene(startScene);
+
+        newPackageController.setAgencyController(agencyController);
+        agencyController.setNewPackageController(newPackageController);
 
         window.setScene(startScene);
         window.setTitle("Travel Booker");

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
+import sample.model.User;
 import sample.model.Warning;
 import sample.service.UserService;
 
@@ -76,6 +77,7 @@ public class LoginController {
         this.username=usernameTextfield.getText();
         this.password=passwordTextfield.getText();
         Warning result=userService.loginUser(this.username,this.password);
+        User user=userService.findUserByName(username);
         if(result==Warning.NOT_FOUND){
             incorrectUsernameLabel.setVisible(true);
         }else if(result==Warning.WRONG_PASS){
@@ -85,6 +87,8 @@ public class LoginController {
         }else{
             UserProfileController userProfileController=main.getUserProfileController();
             userProfileController.setUsernameLabel(username);
+            userProfileController.setUser(user);
+            userProfileController.getBookedObservableList().addAll(user.getPackages());
             main.setScene(userProfileScene);
         }
 

@@ -42,4 +42,8 @@ public class UserService {
         }
     }
 
+    public User findUserByName(String name){
+        return userRepository.retrieveUserFromDB(name);
+    }
+
 }

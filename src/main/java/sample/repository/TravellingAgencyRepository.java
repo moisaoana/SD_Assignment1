@@ -1,8 +1,10 @@
 package sample.repository;
 
+import javafx.collections.ObservableList;
 import sample.model.Destination;
 import sample.model.Package;
 import sample.model.Status;
+import sample.model.User;
 
 
 import javax.persistence.EntityManager;
@@ -69,19 +71,20 @@ public class TravellingAgencyRepository {
 
     public int getNextIdPackageFromDB(){
         List<Package> allPack=getAllPackagesFromDB();
-        return allPack.size()+1;
+        return allPack.get(allPack.size()-1).getId()+1;
     }
 
     public List<String> getStringDestinations(){
         List<Destination> allDest=getAllDestinationsFromDB();
         return allDest.stream().map(Destination::getName).collect(Collectors.toList());
     }
-    public void insertPackageInDB(String dest,String name,double price,int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, String details, int capacity){
+    public void insertPackageInDB(String dest, String name, double price, int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, String details, int capacity){
         LocalDate startDate=LocalDate.of(startYear,startMonth,startDay);
         LocalDate endDate=LocalDate.of(endYear,endMonth,endDay);
         int id=getNextIdPackageFromDB();
         Destination destination=getDestinationFromName(dest);
         Package newPackage= new Package(id,name,price,startDate,endDate,details, Status.NOT_BOOKED,capacity,0,destination);
+
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         destination.getPackages().add(newPackage);
@@ -99,5 +102,38 @@ public class TravellingAgencyRepository {
         }
         return false;
     }
+    public void deletePackageFromDB(int id){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.createQuery("DELETE FROM Package p WHERE p.id= :id")
+                .setParameter("id",id).executeUpdate();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    public void deleteDestinationFromDB(String destination){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Destination d=getDestinationFromName(destination);
+        entityManager.remove(entityManager.contains(d) ? d : entityManager.merge(d));;
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public void bookPackage(User user, Package p){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        user.getPackages().add(p);
+        entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    public void editPackage(Package p){
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
 
 }

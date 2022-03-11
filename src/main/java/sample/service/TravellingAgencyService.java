@@ -3,6 +3,8 @@ package sample.service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.model.Package;
+import sample.model.Status;
+import sample.model.User;
 import sample.model.Warning;
 import sample.repository.TravellingAgencyRepository;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class TravellingAgencyService {
     private TravellingAgencyRepository travellingAgencyRepository=new TravellingAgencyRepository();
+
     public Warning addNewDestination(String name){
         if(!name.isEmpty()) {
             if(!travellingAgencyRepository.destinationExistsInDB(name)){
@@ -101,6 +104,38 @@ public class TravellingAgencyService {
     public ObservableList<Package> getAllPackages() {
         List<Package> allPack=travellingAgencyRepository.getAllPackagesFromDB();
         return FXCollections.observableArrayList(allPack);
+    }
+    public ObservableList<Package> getAvailablePackages() {
+        List<Package> allPack=travellingAgencyRepository.getAllPackagesFromDB();
+        ObservableList<Package> avPackages=FXCollections.observableArrayList();
+        for(Package p: allPack){
+            if(p.getStatus()!= Status.BOOKED){
+                avPackages.add(p);
+            }
+        }
+        return avPackages;
+    }
+
+    public void deletePackage(int id){
+        travellingAgencyRepository.deletePackageFromDB(id);
+    }
+    public void deleteDestination(String destination){
+        travellingAgencyRepository.deleteDestinationFromDB(destination);
+    }
+    public boolean bookPackage(User user, Package p){
+        if(p.getStatus()!=Status.BOOKED){
+            if(p.getCurrentCapacity()==0){
+                p.setStatus(Status.IN_PROGRESS);
+            }
+            p.setCurrentCapacity(p.getCurrentCapacity()+1);
+            if(p.getCurrentCapacity()==p.getMaxCapacity()){
+                p.setStatus(Status.BOOKED);
+            }
+            travellingAgencyRepository.bookPackage(user,p);
+            travellingAgencyRepository.editPackage(p);
+            return true;
+        }
+        return false;
     }
 
 

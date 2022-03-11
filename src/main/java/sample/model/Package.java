@@ -3,6 +3,8 @@ package sample.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="package")
@@ -37,6 +39,10 @@ public class Package {
     @ManyToOne
     @JoinColumn(name="destination_id", nullable=false)
     private Destination destination;
+
+    @ManyToMany(mappedBy = "packages")
+    private List<User> users;
+
 
     public Package(int id, String name, double price, LocalDate startDate, LocalDate endDate, String details, Status status, int maxCapacity, int currentCapacity, Destination destination) {
         this.id = id;
@@ -133,5 +139,13 @@ public class Package {
 
     public void setDestination(Destination destination) {
         this.destination = destination;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
