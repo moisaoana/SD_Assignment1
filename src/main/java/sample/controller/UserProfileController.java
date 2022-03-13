@@ -180,13 +180,15 @@ void init1(){
                         AgencyController.styleButton(newButton);
                         newButton.setOnAction((ActionEvent event) -> {
                             Package packageToBeAdded = getTableView().getItems().get(getIndex());
-                            observableList.add(packageToBeAdded);
-                            bookTableView.setItems(observableList);
-                            bookTableView.refresh();
-                            travellingAgencyService.bookPackage(user,packageToBeAdded);
-                            packageObservableList=travellingAgencyService.getAvailablePackages();
-                            packageTableView.setItems(packageObservableList);
-                            packageTableView.refresh();
+                            boolean result=travellingAgencyService.bookPackage(user,packageToBeAdded);
+                            if(result) {
+                                observableList.add(packageToBeAdded);
+                                bookTableView.setItems(observableList);
+                                bookTableView.refresh();
+                                packageObservableList = travellingAgencyService.getAvailablePackages();
+                                packageTableView.setItems(packageObservableList);
+                                packageTableView.refresh();
+                            }
                             //init();
 
                         });

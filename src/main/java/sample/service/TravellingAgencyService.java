@@ -170,10 +170,14 @@ public class TravellingAgencyService {
                 p.setStatus(Status.BOOKED);
             }
             System.out.println(p.getId());
-            travellingAgencyRepository.editPackage(p);
-            travellingAgencyRepository.bookPackage(user,p);
 
-            return true;
+            boolean result=travellingAgencyRepository.bookPackage(user,p);
+            if(result){
+                travellingAgencyRepository.editPackage(p);
+                return true;
+            }else{
+                return false;
+            }
         }
         return false;
     }

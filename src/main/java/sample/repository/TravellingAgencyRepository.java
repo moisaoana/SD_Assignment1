@@ -10,6 +10,7 @@ import sample.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -139,22 +140,27 @@ public class TravellingAgencyRepository {
         entityManager.close();
     }
 
-    public void bookPackage(User user, Package p){
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+    public boolean bookPackage(User user, Package p){
+        try {
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
 
-       // List<Package> packageList=user.getPackages();
-       //packageList.add(p);
-       // user.setPackages(packageList);
-        //entityManager.merge(user);
-        //entityManager.flush();
-        User u1=entityManager.find(User.class,user.getId());
-        Package p1=entityManager.find(Package.class,p.getId());
-        u1.getPackages().add(p1);
-        //entityManager.merge(u1);
-        entityManager.persist(u1);
-        entityManager.getTransaction().commit();
-        entityManager.close();
+            // List<Package> packageList=user.getPackages();
+            //packageList.add(p);
+            // user.setPackages(packageList);
+            //entityManager.merge(user);
+            //entityManager.flush();
+            User u1 = entityManager.find(User.class, user.getId());
+            Package p1 = entityManager.find(Package.class, p.getId());
+            u1.getPackages().add(p1);
+            //entityManager.merge(u1);
+            entityManager.persist(u1);
+            entityManager.getTransaction().commit();
+            entityManager.close();
+            return true;
+        }catch(RollbackException e){
+            return false;
+        }
     }
     public void editPackage(Package p){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
