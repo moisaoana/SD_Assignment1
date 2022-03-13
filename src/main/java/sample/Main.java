@@ -81,8 +81,6 @@ public class Main extends Application {
         userProfileController.setMain(this);
         userProfileController.setStartScene(startScene);
 
-
-
         newPackageController.setMain(this);
         newPackageController.setAgencyScene(agencyScene);
 

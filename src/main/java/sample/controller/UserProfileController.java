@@ -137,16 +137,7 @@ public class UserProfileController {
         bookedObservableList.clear();
         main.setScene(startPage);
     }
-/*
-    void init1(){
-        packageObservableList=travellingAgencyService.getAvailablePackages();
-        AgencyController.addDataToTable(nameColumn,destinationColumn,priceColumn,detailsColumn,maxCapacityColumn,currCapacityColumn,statusColumn,startDateColumn,endDateColumn,packageTableView,packageObservableList);
-        AgencyController.addDataToTable(nameColumnB,destinationColumnB,priceColumnB,detailsColumnB,maxCapacityColumnB,currCapacityColumnB,statusColumnB,startDateColumnB,endDateColumnB,bookTableView,bookedObservableList);
-        //addButtonBook(packageTableView,bookedObservableList);
-        filterTable();
-        packageTableView.refresh();
-    }
-*/
+
 @FXML
 void init1(){
     packageObservableList=travellingAgencyService.getAvailablePackages();

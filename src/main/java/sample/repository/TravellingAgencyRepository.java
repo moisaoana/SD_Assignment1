@@ -67,7 +67,6 @@ public class TravellingAgencyRepository {
     }
     public int getNextIdDestinationFromDB(){
         List<Destination> allDest=getAllDestinationsFromDB();
-        //return allDest.get(allDest.size()-1).getId()+1;
         return getMaxId(allDest)+1;
     }
 
@@ -145,15 +144,9 @@ public class TravellingAgencyRepository {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
 
-            // List<Package> packageList=user.getPackages();
-            //packageList.add(p);
-            // user.setPackages(packageList);
-            //entityManager.merge(user);
-            //entityManager.flush();
             User u1 = entityManager.find(User.class, user.getId());
             Package p1 = entityManager.find(Package.class, p.getId());
             u1.getPackages().add(p1);
-            //entityManager.merge(u1);
             entityManager.persist(u1);
             entityManager.getTransaction().commit();
             entityManager.close();
@@ -175,11 +168,6 @@ public class TravellingAgencyRepository {
         LocalDate endDate=LocalDate.of(endYear,endMonth,endDay);
         Destination destination=getDestinationFromName(dest);
         Package newPackage= new Package(id,name,price,startDate,endDate,details,status,capacity,currCap,destination);
-        System.out.println(id);
-        System.out.println(name);
-        System.out.println(startDate);
-        System.out.println(endDate);
-        System.out.println(details);
 
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
