@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.UserProfileController">
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: #E1FFFE;" styleClass="bodybg" stylesheets="@../../../../resources/background2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.UserProfileController">
    <children>
       <Label fx:id="usernameLabel" layoutX="27.0" layoutY="22.0" text="username" textAlignment="CENTER" textFill="#2a8b6e">
          <font>
@@ -21,17 +21,17 @@
             <Font name="Bodoni MT Bold Italic" size="27.0" />
          </font>
       </Label>
-      <TableView fx:id="packageTableView" layoutX="14.0" layoutY="153.0" prefHeight="191.0" prefWidth="975.0" stylesheets="@../../../../resources/table.css">
+      <TableView fx:id="packageTableView" layoutX="14.0" layoutY="153.0" prefHeight="191.0" prefWidth="1079.0" stylesheets="@../../../../resources/table.css">
          <columns>
-            <TableColumn fx:id="nameColumn" prefWidth="134.00000476837158" text="Name" />
-            <TableColumn fx:id="destinationColumn" prefWidth="122.00001525878906" text="Destination" />
-            <TableColumn fx:id="priceColumn" minWidth="6.6666259765625" prefWidth="64.0" text="Price" />
-            <TableColumn fx:id="detailsColumn" prefWidth="186.00003051757812" text="Details" />
-            <TableColumn fx:id="maxCapacityColumn" prefWidth="57.999969482421875" text="Max.Cap." />
-            <TableColumn fx:id="currCapacityColumn" prefWidth="63.333343505859375" text="Curr.Capp." />
-            <TableColumn fx:id="statusColumn" prefWidth="105.33331298828125" text="Status" />
-            <TableColumn fx:id="startDateColumn" prefWidth="89.33331298828125" text="Start Date" />
-            <TableColumn fx:id="endDateColumn" prefWidth="88.666748046875" text="End Date" />
+            <TableColumn fx:id="nameColumn" prefWidth="204.00000476837158" text="Name" />
+            <TableColumn fx:id="destinationColumn" prefWidth="118.00001525878906" text="Destination" />
+            <TableColumn fx:id="priceColumn" minWidth="6.6666259765625" prefWidth="68.6666259765625" text="Price" />
+            <TableColumn fx:id="detailsColumn" prefWidth="214.66671752929688" text="Details" />
+            <TableColumn fx:id="maxCapacityColumn" prefWidth="65.3333740234375" text="Max.Cap." />
+            <TableColumn fx:id="currCapacityColumn" prefWidth="66.0" text="Curr.Cap." />
+            <TableColumn fx:id="statusColumn" prefWidth="110.66668701171875" text="Status" />
+            <TableColumn fx:id="startDateColumn" prefWidth="86.0" text="Start Date" />
+            <TableColumn fx:id="endDateColumn" prefWidth="91.33331298828125" text="End Date" />
          </columns>
       </TableView>
       <Label fx:id="availablePackagesLabel" layoutX="31.0" layoutY="87.0" text="Available packages:" textAlignment="CENTER" textFill="#ebc00c">
@@ -39,10 +39,10 @@
             <Font name="Bodoni MT Bold" size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="destTF" layoutX="153.0" layoutY="127.0" prefHeight="25.0" prefWidth="119.0" promptText="Search" />
-      <TextField fx:id="priceTF" layoutX="272.0" layoutY="127.0" prefHeight="25.0" prefWidth="65.0" promptText="Search" />
-      <TextField fx:id="startDateTF" layoutX="751.0" layoutY="127.0" prefHeight="25.0" prefWidth="90.0" promptText="Search" />
-      <TextField fx:id="endDateTF" layoutX="842.0" layoutY="127.0" prefHeight="25.0" prefWidth="90.0" promptText="Search" />
+      <TextField fx:id="destTF" layoutX="220.0" layoutY="127.0" prefHeight="25.0" prefWidth="119.0" promptText="Search" />
+      <TextField fx:id="priceTF" layoutX="339.0" layoutY="127.0" prefHeight="25.0" prefWidth="65.0" promptText="Search" />
+      <TextField fx:id="startDateTF" layoutX="864.0" layoutY="127.0" prefHeight="25.0" prefWidth="90.0" promptText="Search" />
+      <TextField fx:id="endDateTF" layoutX="953.0" layoutY="127.0" prefHeight="25.0" prefWidth="90.0" promptText="Search" />
       <Line endX="88.0" layoutX="132.0" layoutY="114.0" startX="-100.0" stroke="#2a8b6e" />
       <Label fx:id="bookedPackagesLabel" layoutX="29.0" layoutY="360.0" text="Booked packages:" textAlignment="CENTER" textFill="#ebc00c">
          <font>
@@ -50,17 +50,17 @@
          </font>
       </Label>
       <Line endX="56.00001525878906" layoutX="132.0" layoutY="389.0" startX="-100.0" stroke="#2a8b6e" />
-      <TableView fx:id="bookTableView" layoutX="14.0" layoutY="400.0" prefHeight="191.0" prefWidth="915.0" stylesheets="@../../../../resources/table.css">
+      <TableView fx:id="bookTableView" layoutX="14.0" layoutY="400.0" prefHeight="191.0" prefWidth="1027.0" stylesheets="@../../../../resources/table.css">
          <columns>
-            <TableColumn fx:id="nameColumnB" prefWidth="134.00000476837158" text="Name" />
-            <TableColumn fx:id="destinationColumnB" prefWidth="122.00001525878906" text="Destination" />
-            <TableColumn fx:id="priceColumnB" minWidth="6.6666259765625" prefWidth="64.0" text="Price" />
-            <TableColumn fx:id="detailsColumnB" prefWidth="186.00003051757812" text="Details" />
-            <TableColumn fx:id="maxCapacityColumnB" prefWidth="57.999969482421875" text="Max.Cap." />
-            <TableColumn fx:id="currCapacityColumnB" prefWidth="63.333343505859375" text="Curr.Capp." />
-            <TableColumn fx:id="statusColumnB" prefWidth="105.33331298828125" text="Status" />
-            <TableColumn fx:id="startDateColumnB" prefWidth="89.33331298828125" text="Start Date" />
-            <TableColumn fx:id="endDateColumnB" prefWidth="88.666748046875" text="End Date" />
+            <TableColumn fx:id="nameColumnB" prefWidth="204.00000476837158" text="Name" />
+            <TableColumn fx:id="destinationColumnB" prefWidth="118.00001525878906" text="Destination" />
+            <TableColumn fx:id="priceColumnB" minWidth="6.6666259765625" prefWidth="68.6666259765625" text="Price" />
+            <TableColumn fx:id="detailsColumnB" prefWidth="214.66671752929688" text="Details" />
+            <TableColumn fx:id="maxCapacityColumnB" prefWidth="65.3333740234375" text="Max.Cap." />
+            <TableColumn fx:id="currCapacityColumnB" prefWidth="66.0" text="Curr.Cap." />
+            <TableColumn fx:id="statusColumnB" prefWidth="110.66668701171875" text="Status" />
+            <TableColumn fx:id="startDateColumnB" prefWidth="86.0" text="Start Date" />
+            <TableColumn fx:id="endDateColumnB" prefWidth="91.33331298828125" text="End Date" />
          </columns>
       </TableView>
       <Button fx:id="backButton" layoutX="407.0" layoutY="602.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="29.0" prefWidth="81.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">

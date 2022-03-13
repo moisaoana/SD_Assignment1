@@ -17,6 +17,7 @@ import java.net.URL;
 public class Main extends Application {
     Stage window;
     private UserProfileController userProfileController;
+    private AgencyController agencyController;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -51,7 +52,7 @@ public class Main extends Application {
         loader = new FXMLLoader();
         loader.setLocation(urlAgency);
         Parent rootAgency=loader.load();
-        AgencyController agencyController = loader.getController();
+        agencyController = loader.getController();
 
         loader = new FXMLLoader();
         loader.setLocation(urlNewPackage);
@@ -61,8 +62,8 @@ public class Main extends Application {
         Scene startScene = new Scene(rootStartPage, 650, 550);
         Scene loginScene = new Scene(rootLogin, 650, 550);
         Scene registerScene=new Scene(rootRegister,650,550);
-        Scene userProfileScene=new Scene(rootUserProfile,1000,650);
-        Scene agencyScene=new Scene(rootAgency,900,550);
+        Scene userProfileScene=new Scene(rootUserProfile,1100,650);
+        Scene agencyScene=new Scene(rootAgency,1100,550);
         Scene newPackageScene=new Scene(rootNewPackage,400,600);
 
         loginController.setMain(this);
@@ -103,6 +104,9 @@ public class Main extends Application {
 
     public UserProfileController getUserProfileController() {
         return userProfileController;
+    }
+    public AgencyController getAgencyController(){
+        return agencyController;
     }
 
     public static void main(String[] args) {

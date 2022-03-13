@@ -40,7 +40,11 @@ public class UserRepository {
     }
     public int getNextIdFromDB(){
         List<User> allUsers=getAllUsersFromDB();
-        return allUsers.size()+1;
+        if(allUsers.size()==0){
+            return 1;
+        }else {
+            return allUsers.get(allUsers.size()-1).getId() + 1;
+        }
     }
     public User retrieveUserFromDB(String username){
         EntityManager entityManager=entityManagerFactory.createEntityManager();

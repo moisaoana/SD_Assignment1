@@ -40,6 +40,8 @@ public class StartPageController {
 
     @FXML
     void clickAgency(ActionEvent event) {
+        AgencyController agencyController=main.getAgencyController();
+        agencyController.init1();
         main.setScene(agencyScene);
     }
 

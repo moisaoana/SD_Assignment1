@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #ebc00c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.NewPackageController">
    <children>
       <Label fx:id="titleLabel" layoutX="59.0" layoutY="14.0" text="Add new package" textAlignment="CENTER" textFill="WHITE">
@@ -60,17 +59,17 @@
       <TextField fx:id="endYearTextfield" layoutX="248.0" layoutY="314.0" prefHeight="27.0" prefWidth="46.0" promptText="YYYY" />
       <TextField fx:id="detailsTextfield" layoutX="156.0" layoutY="368.0" prefHeight="56.0" prefWidth="229.0" promptText="Enter extra details" />
       <TextField fx:id="capacityTextfield" layoutX="118.0" layoutY="436.0" prefHeight="27.0" prefWidth="93.0" promptText="Enter capacity" />
-      <Button fx:id="addButton" layoutX="63.0" layoutY="518.0" mnemonicParsing="false" onAction="#clickAdd" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="ADD" textFill="WHITE">
+      <Button fx:id="addButton" layoutX="20.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickAdd" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="ADD" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="19.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" layoutX="162.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="CLEAR" textFill="WHITE">
+      <Button fx:id="clearButton" layoutX="107.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickClear" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="CLEAR" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="256.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="192.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickBack" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="BACK" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="19.0" />
          </font>
@@ -81,5 +80,10 @@
             <Font name="Bodoni MT Bold Italic" size="17.0" />
          </font>
       </Label>
+      <Button fx:id="editButton" disable="true" layoutX="274.0" layoutY="515.0" mnemonicParsing="false" onAction="#clickEdit" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: LIGHTSEAGREEN;" stylesheets="@../../../../resources/button.css" text="EDIT" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="19.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

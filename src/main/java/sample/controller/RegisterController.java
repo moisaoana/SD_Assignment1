@@ -65,6 +65,7 @@ public class RegisterController {
 
     @FXML
     void clickBack(ActionEvent event) {
+        clearTextFields();
         disableWarnings();
         main.setScene(startScene);
     }

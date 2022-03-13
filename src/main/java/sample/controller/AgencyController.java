@@ -152,6 +152,14 @@ public class AgencyController {
         addButtonsRemove(packageTableView,packageObservableList);
         addButtonsEdit(packageTableView,packageObservableList);
     }
+    void init1(){
+        packageObservableList=travellingAgencyService.getAllPackages();
+        packageTableView.setItems(packageObservableList);
+        packageTableView.refresh();
+        //populateTable();
+        //addButtonsRemove(packageTableView,packageObservableList);
+        //addButtonsEdit(packageTableView,packageObservableList);
+    }
     public void addButtonsRemove(TableView<Package> tableView,ObservableList<Package>observableList)
     {
         TableColumn<Package, Void> buttons = new TableColumn<>("Remove");
@@ -165,8 +173,9 @@ public class AgencyController {
                         styleButton(newButton);
                         newButton.setOnAction((ActionEvent event) -> {
                             Package packageToBeDeleted = getTableView().getItems().get(getIndex());
-                            observableList.remove(packageToBeDeleted);
-                            tableView.refresh();
+                            packageObservableList.remove(packageToBeDeleted);
+                            packageTableView.setItems(packageObservableList);
+                            packageTableView.refresh();
                             travellingAgencyService.deletePackage(packageToBeDeleted.getId());
                         });
                     }
@@ -199,11 +208,10 @@ public class AgencyController {
                         styleButton(newButton);
                         newButton.setOnAction((ActionEvent event) -> {
                             Package packageToBeEdited = getTableView().getItems().get(getIndex());
-                             //observableList.remove(packageToBeDeleted);
-                           // tableView.refresh();
-                           // travellingAgencyService.deletePackage(packageToBeDeleted.getId());
-                            travellingAgencyService.deletePackage(packageToBeEdited.getId());
                             newPackageController.editPackage(packageToBeEdited);
+                            newPackageController.setPackageToBeEdited(packageToBeEdited);
+                            newPackageController.getAddButton().setDisable(true);
+                            newPackageController.getEditButton().setDisable(false);
                             main.setScene(newPackageScene);
 
                         });

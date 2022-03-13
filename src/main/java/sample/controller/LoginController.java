@@ -61,8 +61,10 @@ public class LoginController {
 
     @FXML
     void clickBack(ActionEvent event) {
-        main.setScene(startScene);
+        clearTextFields();
         disableWarnings();
+        main.setScene(startScene);
+
     }
 
     @FXML
@@ -89,6 +91,8 @@ public class LoginController {
             userProfileController.setUsernameLabel(username);
             userProfileController.setUser(user);
             userProfileController.getBookedObservableList().addAll(user.getPackages());
+            userProfileController.init1();
+            clearTextFields();
             main.setScene(userProfileScene);
         }
 

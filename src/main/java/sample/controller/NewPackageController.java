@@ -18,6 +18,7 @@ import sample.service.TravellingAgencyService;
 
 public class NewPackageController {
     public  ObservableList<String> mapList;
+    private Package packageToBeEdited;
     private Main main;
     private Scene agencyScene;
     TravellingAgencyService travellingAgencyService=new TravellingAgencyService();
@@ -30,6 +31,9 @@ public class NewPackageController {
     }
     public void setAgencyController(AgencyController controller){
         this.agencyController=controller;
+    }
+    public void setPackageToBeEdited(Package p){
+        this.packageToBeEdited=p;
     }
 
     @FXML
@@ -103,6 +107,10 @@ public class NewPackageController {
     private Label warningLabel;
 
     @FXML
+    private Button editButton;
+
+
+    @FXML
     void clickAdd(ActionEvent event) {
         warningLabel.setVisible(false);
         String name=nameTextfield.getText();
@@ -116,7 +124,7 @@ public class NewPackageController {
         String endYear=endYearTextfield.getText();
         String details=detailsTextfield.getText();
         String capacity=capacityTextfield.getText();
-        Warning result=travellingAgencyService.addNewPackage(destination,name,price,startDay,startMonth,startYear,endDay,endMonth,endYear,details,capacity);
+        Warning result=travellingAgencyService.addNewPackage(destination,name,price,startDay,startMonth,startYear,endDay,endMonth,endYear,details,capacity,false,null,0,0);
         System.out.println(result);
         switch(result){
             case EMPTY_FIELDS: {
@@ -171,6 +179,8 @@ public class NewPackageController {
 
     @FXML
     void clickBack(ActionEvent event) {
+        editButton.setDisable(true);
+        addButton.setDisable(false);
         main.setScene(agencyScene);
     }
 
@@ -214,7 +224,81 @@ public class NewPackageController {
         endYearTextfield.setText(Integer.toString(p.getEndDate().getYear()));
         detailsTextfield.setText(p.getDetails());
         capacityTextfield.setText(Integer.toString(p.getMaxCapacity()));
+    }
+    @FXML
+    void clickEdit(ActionEvent event) {
+        warningLabel.setVisible(false);
+        String name=nameTextfield.getText();
+        String price=priceTextField.getText();
+        String destination=comboBox.getValue();
+        String startDay=startDayTextfield.getText();
+        String startMonth=startMonthTextfield.getText();
+        String startYear=startYearTextfield.getText();
+        String endDay=endDayTextfield.getText();
+        String endMonth=endMonthTextfield.getText();
+        String endYear=endYearTextfield.getText();
+        String details=detailsTextfield.getText();
+        String capacity=capacityTextfield.getText();
+        Warning result=travellingAgencyService.addNewPackage(destination,name,price,startDay,startMonth,startYear,endDay,endMonth,endYear,details,capacity,true,packageToBeEdited.getStatus(),packageToBeEdited.getCurrentCapacity(),packageToBeEdited.getId());
 
+        switch(result){
+            case EMPTY_FIELDS: {
+                warningLabel.setText("Empty fields!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_PRICE:{
+                warningLabel.setText("Invalid price!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_DATE:{
+                warningLabel.setText("Invalid date!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_YEAR:{
+                warningLabel.setText("Invalid year!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_MONTH:{
+                warningLabel.setText("Invalid month!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_DAY:{
+                warningLabel.setText("Invalid day!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case INVALID_CAPACITY:{
+                warningLabel.setText("Invalid capacity!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case DUPLICATE:{
+                warningLabel.setText("Package already exists!");
+                warningLabel.setVisible(true);
+                break;
+            }
+            case SUCCESS:{
+                clearAllFields();
+                warningLabel.setVisible(false);
+                agencyController.updateTable();
+                editButton.setDisable(true);
+                addButton.setDisable(false);
+                main.setScene(agencyScene);
+                break;
+            }
+        }
     }
 
+    public Button getAddButton() {
+        return addButton;
+    }
+
+    public Button getEditButton() {
+        return editButton;
+    }
 }

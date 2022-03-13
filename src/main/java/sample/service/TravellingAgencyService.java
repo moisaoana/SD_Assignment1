@@ -51,7 +51,25 @@ public class TravellingAgencyService {
     private boolean isYear(int year){
         return year >= 2000 && year <= 2023;
     }
-    public Warning addNewPackage(String destination,String name, String price, String startDay, String startMonth, String startYear, String endDay, String endMonth, String endYear, String details,String capacity)
+    private boolean isDate(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear){
+        if(endYear<startYear){
+            return false;
+        }else{
+            if(startYear==endYear){
+                if(startMonth>endMonth){
+                    return false;
+                }else{
+                    if(startMonth==endMonth){
+                        if(startDay>endDay){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    public Warning addNewPackage(String destination,String name, String price, String startDay, String startMonth, String startYear, String endDay, String endMonth, String endYear, String details,String capacity, boolean edit, Status status, int currCap, int id)
     {
         if(validatePackageInfo(destination,name,price,startDay,startMonth,startYear,endDay,endMonth,endYear,details,capacity)) {
             double packagePrice;
@@ -79,19 +97,39 @@ public class TravellingAgencyService {
                 }else{
                     if(!isDay(startDayP,startMonthP) || !isDay(endDayP,endMonthP)){
                         return Warning.INVALID_DAY;
-                    }else{
-                        try{
-                            capacityP=Integer.parseInt(capacity);
-                        }catch(NumberFormatException numberFormatException){
-                            return Warning.INVALID_CAPACITY;
-                        }
-                        //verify if name is unique
-                        //valid data
-                        if(travellingAgencyRepository.packageExistsInDB(name)){
-                            return Warning.DUPLICATE;
-                        }else {
-                            travellingAgencyRepository.insertPackageInDB(destination, name, packagePrice, startDayP, startMonthP, startYearP, endDayP, endMonthP, endYearP, details, capacityP);
-                            return Warning.SUCCESS;
+                    }else {
+                        if (!isDate(startDayP, startMonthP, startYearP, endDayP, endMonthP, endYearP)) {
+                            return Warning.INVALID_DATE;
+                        } else {
+                            try {
+                                capacityP = Integer.parseInt(capacity);
+                            } catch (NumberFormatException numberFormatException) {
+                                return Warning.INVALID_CAPACITY;
+                            }
+                            //verify if name is unique
+                            //valid data
+                            if (!edit) {
+                                if (travellingAgencyRepository.packageExistsInDB(name)) {
+                                    return Warning.DUPLICATE;
+                                } else {
+                                    travellingAgencyRepository.insertPackageInDB(destination, name, packagePrice, startDayP, startMonthP, startYearP, endDayP, endMonthP, endYearP, details, capacityP);
+                                    return Warning.SUCCESS;
+                                }
+                            } else {
+                                if (capacityP < currCap) {
+                                    return Warning.INVALID_CAPACITY;
+                                } else {
+                                    if (capacityP == currCap) {
+                                        status = Status.BOOKED;
+                                    } else {
+                                        if (status == Status.BOOKED) {
+                                            status = Status.IN_PROGRESS;
+                                        }
+                                    }
+                                    travellingAgencyRepository.modifyPackage(destination, name, packagePrice, startDayP, startMonthP, startYearP, endDayP, endMonthP, endYearP, details, capacityP, status, currCap, id);
+                                    return Warning.SUCCESS;
+                                }
+                            }
                         }
                     }
                 }
@@ -131,12 +169,13 @@ public class TravellingAgencyService {
             if(p.getCurrentCapacity()==p.getMaxCapacity()){
                 p.setStatus(Status.BOOKED);
             }
-            travellingAgencyRepository.bookPackage(user,p);
+            System.out.println(p.getId());
             travellingAgencyRepository.editPackage(p);
+            travellingAgencyRepository.bookPackage(user,p);
+
             return true;
         }
         return false;
     }
-
 
 }

@@ -66,12 +66,26 @@ public class TravellingAgencyRepository {
     }
     public int getNextIdDestinationFromDB(){
         List<Destination> allDest=getAllDestinationsFromDB();
-        return allDest.size()+1;
+        //return allDest.get(allDest.size()-1).getId()+1;
+        return getMaxId(allDest)+1;
     }
 
     public int getNextIdPackageFromDB(){
         List<Package> allPack=getAllPackagesFromDB();
-        return allPack.get(allPack.size()-1).getId()+1;
+        if(allPack.size()==0){
+            return 1;
+        }else {
+            return allPack.get(allPack.size() - 1).getId() + 1;
+        }
+    }
+    public int getMaxId( List<Destination> list){
+        int max=0;
+        for(Destination d: list){
+            if(d.getId()>max){
+                max=d.getId();
+            }
+        }
+        return max;
     }
 
     public List<String> getStringDestinations(){
@@ -114,7 +128,13 @@ public class TravellingAgencyRepository {
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         Destination d=getDestinationFromName(destination);
-        entityManager.remove(entityManager.contains(d) ? d : entityManager.merge(d));;
+        entityManager.createQuery("DELETE FROM Package p WHERE p.destination= :id")
+           .setParameter("id",d).executeUpdate();
+
+        //entityManager.remove(entityManager.contains(d) ? d : entityManager.merge(d));
+
+        entityManager.createQuery("DELETE FROM Destination d WHERE d.id= :id")
+                .setParameter("id",d.getId()).executeUpdate();
         entityManager.getTransaction().commit();
         entityManager.close();
     }
@@ -122,15 +142,42 @@ public class TravellingAgencyRepository {
     public void bookPackage(User user, Package p){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        user.getPackages().add(p);
-        entityManager.merge(user);
+
+       // List<Package> packageList=user.getPackages();
+       //packageList.add(p);
+       // user.setPackages(packageList);
+        //entityManager.merge(user);
+        //entityManager.flush();
+        User u1=entityManager.find(User.class,user.getId());
+        Package p1=entityManager.find(Package.class,p.getId());
+        u1.getPackages().add(p1);
+        //entityManager.merge(u1);
+        entityManager.persist(u1);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
     public void editPackage(Package p){
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
+        System.out.println(p.getId());
         entityManager.merge(p);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    public void modifyPackage(String dest, String name, double price, int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, String details, int capacity, Status status, int currCap,int id){
+        LocalDate startDate=LocalDate.of(startYear,startMonth,startDay);
+        LocalDate endDate=LocalDate.of(endYear,endMonth,endDay);
+        Destination destination=getDestinationFromName(dest);
+        Package newPackage= new Package(id,name,price,startDate,endDate,details,status,capacity,currCap,destination);
+        System.out.println(id);
+        System.out.println(name);
+        System.out.println(startDate);
+        System.out.println(endDate);
+        System.out.println(details);
+
+        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.merge(newPackage);
         entityManager.getTransaction().commit();
         entityManager.close();
     }

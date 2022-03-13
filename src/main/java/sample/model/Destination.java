@@ -13,7 +13,7 @@ public class Destination {
     @Column(unique= true, nullable=false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="destination",fetch = FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="destination",fetch = FetchType.EAGER)
     private List<Package> packages;
 
     public Destination(){

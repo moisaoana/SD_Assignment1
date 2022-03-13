@@ -134,11 +134,29 @@ public class UserProfileController {
         priceTF.clear();
         startDateTF.clear();
         endDateTF.clear();
+        bookedObservableList.clear();
         main.setScene(startPage);
     }
+/*
+    void init1(){
+        packageObservableList=travellingAgencyService.getAvailablePackages();
+        AgencyController.addDataToTable(nameColumn,destinationColumn,priceColumn,detailsColumn,maxCapacityColumn,currCapacityColumn,statusColumn,startDateColumn,endDateColumn,packageTableView,packageObservableList);
+        AgencyController.addDataToTable(nameColumnB,destinationColumnB,priceColumnB,detailsColumnB,maxCapacityColumnB,currCapacityColumnB,statusColumnB,startDateColumnB,endDateColumnB,bookTableView,bookedObservableList);
+        //addButtonBook(packageTableView,bookedObservableList);
+        filterTable();
+        packageTableView.refresh();
+    }
+*/
+@FXML
+void init1(){
+    packageObservableList=travellingAgencyService.getAvailablePackages();
+    AgencyController.addDataToTable(nameColumn,destinationColumn,priceColumn,detailsColumn,maxCapacityColumn,currCapacityColumn,statusColumn,startDateColumn,endDateColumn,packageTableView,packageObservableList);
+    AgencyController.addDataToTable(nameColumnB,destinationColumnB,priceColumnB,detailsColumnB,maxCapacityColumnB,currCapacityColumnB,statusColumnB,startDateColumnB,endDateColumnB,bookTableView,bookedObservableList);
+    //addButtonBook(packageTableView,bookedObservableList);
+    filterTable();
+    packageTableView.refresh();
 
-
-
+}
     @FXML
     void init(){
         packageObservableList=travellingAgencyService.getAvailablePackages();
@@ -146,6 +164,7 @@ public class UserProfileController {
         AgencyController.addDataToTable(nameColumnB,destinationColumnB,priceColumnB,detailsColumnB,maxCapacityColumnB,currCapacityColumnB,statusColumnB,startDateColumnB,endDateColumnB,bookTableView,bookedObservableList);
         addButtonBook(packageTableView,bookedObservableList);
         filterTable();
+        packageTableView.refresh();
 
     }
     public void addButtonBook(TableView<Package> tableView,ObservableList<Package>observableList)
@@ -166,7 +185,9 @@ public class UserProfileController {
                             bookTableView.refresh();
                             travellingAgencyService.bookPackage(user,packageToBeAdded);
                             packageObservableList=travellingAgencyService.getAvailablePackages();
+                            packageTableView.setItems(packageObservableList);
                             packageTableView.refresh();
+                            //init();
 
                         });
                     }

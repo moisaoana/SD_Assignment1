@@ -40,7 +40,7 @@ public class Package {
     @JoinColumn(name="destination_id", nullable=false)
     private Destination destination;
 
-    @ManyToMany(mappedBy = "packages")
+    @ManyToMany(mappedBy = "packages",fetch = FetchType.EAGER)
     private List<User> users;
 
 
