@@ -1,4 +1,7 @@
 # Holiday Booking Application
+
+_Software Design Assignment, Year 3, Semester 2, UTCN_
+
 2 types of users: regular users and travelling agency
 
 **_Regular user features:_**
